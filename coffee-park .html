@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Coffee Park — Dehradun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+<style>
+:root {
+  --forest:     #2D4A3E;
+  --forest-mid: #3A5E50;
+  --forest-lite:#4E7A68;
+  --ivory:      #FAF4E6;
+  --ivory-deep: #F0E6CF;
+  --amber:      #B5813A;
+  --amber-lite: #C99A52;
+  --bark:       #1A110A;
+  --bark-mid:   #2E1D10;
+  --muted:      #7A6648;
+  --border:     #DDD0B8;
+  --border-lite:#EAE0CC;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--ivory);color:var(--bark);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* ── ANNOUNCEMENT BAR ── */
+.ann-bar{
+  background:var(--forest);
+  color:rgba(250,244,230,0.85);
+  text-align:center;
+  padding:9px 20px;
+  font-family:'DM Sans',sans-serif;
+  font-size:11.5px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  font-weight:400;
+}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--ivory);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;height:72px;
+  transition:box-shadow 0.3s;
+}
+.nav-logo{text-decoration:none;display:flex;flex-direction:column;gap:3px;}
+.nav-logo .n-main{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--forest);letter-spacing:0.5px;line-height:1;}
+.nav-logo .n-sub{font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);font-weight:400;}
+.nav-links{display:flex;gap:36px;align-items:center;list-style:none;}
+.nav-links a{
+  text-decoration:none;
+  font-family:'DM Sans',sans-serif;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--bark);font-weight:500;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--amber);}
+.nav-links .btn-catering{
+  background:var(--forest);color:var(--ivory) !important;
+  padding:10px 22px;border-radius:2px;
+  transition:background 0.25s !important;
+}
+.nav-links .btn-catering:hover{background:var(--amber) !important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--bark);transition:all 0.3s;}
+
+/* ── HERO ── */
+.hero{position:relative;height:95vh;min-height:580px;display:flex;align-items:flex-end;overflow:hidden;}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1800&auto=format&fit=crop&q=85');
+  background-size:cover;background-position:center 55%;
+  animation:hzoom 14s ease forwards;
+}
+@keyframes hzoom{from{transform:scale(1.05);}to{transform:scale(1.0);}}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(26,17,10,0.9) 0%,rgba(26,17,10,0.42) 50%,rgba(26,17,10,0.12) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 80px 84px;
+  max-width:860px;
+  animation:fadeup 1.2s ease 0.2s both;
+}
+@keyframes fadeup{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.h-eyebrow{
+  font-family:'DM Sans',sans-serif;font-size:10px;
+  letter-spacing:5px;text-transform:uppercase;color:var(--amber);
+  font-weight:500;margin-bottom:18px;
+}
+.h-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(46px,7.5vw,88px);font-weight:700;
+  color:var(--ivory);line-height:1.05;margin-bottom:22px;
+}
+.h-title em{font-style:italic;color:var(--amber);}
+.h-desc{
+  font-family:'Cormorant Garamond',serif;font-size:19px;
+  color:rgba(250,244,230,0.78);line-height:1.7;
+  max-width:500px;margin-bottom:42px;
+}
+.h-hours{display:flex;gap:36px;flex-wrap:wrap;}
+.h-hr-item{display:flex;flex-direction:column;gap:4px;}
+.h-hr-label{font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:var(--amber);font-weight:500;}
+.h-hr-time{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--ivory);}
+.hero-btn{
+  position:absolute;bottom:84px;right:80px;z-index:2;
+  display:inline-block;text-decoration:none;
+  background:transparent;border:1.5px solid rgba(250,244,230,0.55);
+  color:var(--ivory);
+  font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:500;
+  padding:14px 32px;border-radius:2px;transition:all 0.25s;
+}
+.hero-btn:hover{background:var(--amber);border-color:var(--amber);color:var(--ivory);}
+
+/* ── STAT BAND ── */
+.stat-band{
+  background:var(--bark);
+  display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;
+  padding:56px 80px;text-align:center;align-items:center;
+}
+.stat-item .s-num{font-family:'Playfair Display',serif;font-size:46px;font-weight:700;color:var(--amber);line-height:1;}
+.stat-item .s-label{font-family:'DM Sans',sans-serif;font-size:9.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(250,244,230,0.4);margin-top:8px;}
+.stat-sep{height:50px;width:1px;background:rgba(255,255,255,0.08);margin:auto;}
+
+/* ── SHARED TYPOGRAPHY ── */
+.sec-label{font-family:'DM Sans',sans-serif;font-size:9.5px;letter-spacing:5px;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:12px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(26px,3.8vw,44px);font-weight:700;color:var(--bark);line-height:1.18;}
+.sec-title em{font-style:italic;color:var(--forest);}
+.sec-divider{width:48px;height:2px;background:var(--amber);margin:18px 0;}
+
+/* ── LOCAL FRIENDS ── */
+.local-section{
+  padding:88px 80px;background:var(--ivory);
+  text-align:center;border-bottom:1px solid var(--border);
+}
+.local-section .sec-divider{margin:18px auto;}
+.local-sub{
+  font-family:'Cormorant Garamond',serif;font-size:18px;
+  color:var(--muted);max-width:580px;margin:0 auto 52px;line-height:1.7;
+}
+.friends-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px;max-width:860px;margin:auto;}
+.f-tag{
+  font-family:'DM Sans',sans-serif;font-size:10.5px;letter-spacing:1.8px;
+  text-transform:uppercase;color:var(--muted);font-weight:400;
+  padding:8px 18px;border:1px solid var(--border);border-radius:1px;
+  transition:all 0.2s;
+}
+.f-tag:hover{border-color:var(--forest);color:var(--forest);background:rgba(45,74,62,0.04);}
+
+/* ── IMAGE BREAK ── */
+.img-break{height:460px;overflow:hidden;position:relative;}
+.img-break img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.7s ease;}
+.img-break:hover img{transform:scale(1.03);}
+.img-break-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(26,17,10,0.65) 0%,rgba(26,17,10,0.1) 65%);
+  display:flex;align-items:center;padding-left:88px;
+}
+.ib-quote blockquote{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(20px,2.8vw,30px);color:var(--ivory);line-height:1.5;
+  max-width:420px;margin-bottom:14px;
+}
+.ib-quote cite{font-family:'DM Sans',sans-serif;font-size:9.5px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);font-style:normal;}
+
+/* ── MENU ── */
+#menu{padding:96px 80px;background:var(--ivory);}
+.menu-header{text-align:center;margin-bottom:64px;}
+.menu-header .sec-divider{margin:18px auto;}
+.hours-row{display:flex;justify-content:center;gap:52px;flex-wrap:wrap;margin-top:28px;}
+.h-chip{display:flex;align-items:center;gap:9px;}
+.h-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;}
+.h-chip-label{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--muted);}
+.h-chip-label strong{color:var(--bark);}
+
+/* Tabs */
+.m-tabs{
+  display:flex;gap:0;border-bottom:2px solid var(--border);
+  margin-bottom:56px;overflow-x:auto;
+}
+.tab-btn{
+  background:none;border:none;cursor:pointer;white-space:nowrap;
+  padding:15px 30px;
+  font-family:'DM Sans',sans-serif;font-size:10.5px;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--muted);font-weight:500;
+  border-bottom:2px solid transparent;margin-bottom:-2px;
+  transition:color 0.2s;
+}
+.tab-btn.active{color:var(--forest);border-bottom-color:var(--forest);}
+.tab-btn:hover{color:var(--amber);}
+.m-panel{display:none;}
+.m-panel.active{display:block;}
+
+/* Menu section */
+.msec{margin-bottom:56px;}
+.msec-title{
+  font-family:'Playfair Display',serif;font-size:11px;letter-spacing:4.5px;
+  text-transform:uppercase;color:var(--forest);font-weight:400;margin-bottom:4px;
+}
+.msec-sub{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--muted);font-style:italic;margin-bottom:22px;}
+.msec-rule{width:36px;height:1px;background:var(--amber);margin-bottom:24px;}
+
+/* Menu grid */
+.m-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.m-item{
+  display:grid;grid-template-columns:1fr auto;align-items:start;gap:18px;
+  padding:18px 20px 18px 0;
+  border-bottom:1px solid var(--border-lite);
+  transition:background 0.15s;
+}
+.m-item:hover{background:rgba(45,74,62,0.03);}
+.m-item:nth-child(even){padding-left:40px;border-left:1px solid var(--border-lite);}
+.i-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--bark);margin-bottom:4px;line-height:1.2;}
+.i-desc{font-family:'DM Sans',sans-serif;font-size:11.5px;color:var(--muted);line-height:1.6;font-weight:300;}
+.i-price{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--amber);font-weight:600;white-space:nowrap;}
+
+/* 3-col grid for baked goods */
+.m-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+.b-item{
+  padding:16px 16px 16px 0;
+  border-bottom:1px solid var(--border-lite);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
+  transition:background 0.15s;
+}
+.b-item:hover{background:rgba(45,74,62,0.03);}
+.b-item:not(:nth-child(3n+1)){padding-left:24px;border-left:1px solid var(--border-lite);}
+
+/* Flight cards */
+.flights-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;}
+.f-card{
+  border:1px solid var(--border);padding:28px;border-radius:2px;
+  background:var(--ivory-deep);transition:border-color 0.2s,transform 0.2s;
+}
+.f-card:hover{border-color:var(--forest);transform:translateY(-3px);}
+.fc-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--bark);margin-bottom:6px;}
+.fc-desc{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.6;}
+.fc-price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--amber);font-weight:600;}
+
+/* ── OUR STORY ── */
+#story{background:var(--bark);overflow:hidden;}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;min-height:580px;}
+.story-img{position:relative;overflow:hidden;}
+.story-img img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.8s ease;}
+.story-img:hover img{transform:scale(1.04);}
+.story-copy{padding:96px 72px;display:flex;flex-direction:column;justify-content:center;}
+.story-copy .sec-label{color:var(--amber);}
+.story-copy .sec-title{color:var(--ivory);}
+.story-copy .sec-title em{color:var(--amber);}
+.story-copy .sec-divider{background:var(--amber);}
+.s-body{font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(250,244,230,0.75);line-height:1.78;margin-bottom:20px;}
+.s-callout{border-left:3px solid var(--amber);padding-left:22px;margin:28px 0;}
+.s-callout p{font-family:'Playfair Display',serif;font-size:19px;font-style:italic;color:var(--ivory);line-height:1.5;}
+
+/* ── OUR HOME ── */
+#our-home{
+  padding:96px 80px;background:var(--ivory);
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.home-img{border-radius:2px;overflow:hidden;height:460px;box-shadow:0 20px 56px rgba(26,17,10,0.15);}
+.home-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;}
+.home-img:hover img{transform:scale(1.04);}
+.home-text .sec-label,.home-text .sec-title,.home-text .sec-divider{text-align:left;}
+.home-body{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--muted);line-height:1.78;margin-bottom:16px;margin-top:18px;}
+.home-credit{font-family:'DM Sans',sans-serif;font-size:9.5px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-top:28px;}
+
+/* ── EVENTS ── */
+#events{background:var(--ivory-deep);padding:96px 80px;text-align:center;}
+#events .sec-divider{margin:18px auto;}
+.e-sub{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--muted);max-width:580px;margin:0 auto 52px;line-height:1.7;}
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1000px;margin:0 auto;}
+.e-card{
+  background:var(--ivory);border:1px solid var(--border);
+  padding:40px 28px;border-radius:2px;
+  transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;
+}
+.e-card:hover{border-color:var(--forest);transform:translateY(-4px);box-shadow:0 14px 36px rgba(45,74,62,0.1);}
+.e-icon{font-size:28px;margin-bottom:18px;}
+.e-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--bark);margin-bottom:10px;}
+.e-desc{font-family:'DM Sans',sans-serif;font-size:12.5px;color:var(--muted);line-height:1.7;font-weight:300;}
+
+/* ── FIND US ── */
+#find-us{
+  background:var(--bark-mid);
+  padding:96px 80px;
+  display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:start;
+}
+#find-us .sec-label{color:var(--amber);}
+#find-us .sec-title{color:var(--ivory);}
+#find-us .sec-title em{color:var(--amber);}
+#find-us .sec-divider{background:var(--amber);}
+.find-info{margin-top:36px;display:flex;flex-direction:column;gap:28px;}
+.fi-label{font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:7px;}
+.fi-val{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--ivory);line-height:1.65;}
+.fi-val a{color:var(--ivory);text-decoration:none;transition:color 0.2s;}
+.fi-val a:hover{color:var(--amber);}
+.hrs-table{font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(250,244,230,0.8);line-height:1.75;}
+.hrs-row{display:flex;justify-content:space-between;gap:24px;}
+.hrs-row .day{color:rgba(250,244,230,0.45);}
+.map-box{
+  border-radius:2px;overflow:hidden;height:400px;
+  border:1px solid rgba(255,255,255,0.07);
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:12px;
+  background:rgba(255,255,255,0.02);
+  border:2px dashed rgba(181,129,58,0.3);
+}
+.map-icon{font-size:44px;}
+.map-place{font-family:'Playfair Display',serif;font-size:20px;color:var(--ivory);}
+.map-addr{font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:2px;color:rgba(250,244,230,0.35);text-transform:uppercase;}
+.map-link{
+  margin-top:8px;display:inline-block;text-decoration:none;
+  background:var(--amber);color:var(--ivory);
+  font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:2.5px;
+  text-transform:uppercase;font-weight:500;padding:12px 26px;border-radius:2px;
+  transition:background 0.2s;
+}
+.map-link:hover{background:var(--forest);}
+
+/* ── FOOTER ── */
+footer{background:var(--bark);padding:60px 80px 32px;border-top:1px solid rgba(255,255,255,0.05);}
+.footer-grid{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;
+  padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:28px;
+}
+.foot-brand .fb-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--amber);margin-bottom:4px;}
+.foot-brand .fb-sub{font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(250,244,230,0.3);margin-bottom:18px;}
+.foot-brand .fb-about{font-family:'Cormorant Garamond',serif;font-size:15.5px;color:rgba(250,244,230,0.45);line-height:1.7;max-width:240px;}
+.foot-col-title{font-family:'DM Sans',sans-serif;font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:18px;}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.foot-links a{font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(250,244,230,0.5);text-decoration:none;transition:color 0.2s;}
+.foot-links a:hover{color:var(--amber);}
+.foot-contact p{font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(250,244,230,0.5);line-height:1.85;}
+.foot-contact a{color:rgba(250,244,230,0.5);text-decoration:none;transition:color 0.2s;}
+.foot-contact a:hover{color:var(--amber);}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.foot-bottom p{font-family:'DM Sans',sans-serif;font-size:10.5px;color:rgba(250,244,230,0.2);letter-spacing:0.5px;}
+.foot-bottom-links{display:flex;gap:24px;list-style:none;}
+.foot-bottom-links a{font-family:'DM Sans',sans-serif;font-size:10.5px;letter-spacing:1px;color:rgba(250,244,230,0.2);text-decoration:none;transition:color 0.2s;}
+.foot-bottom-links a:hover{color:var(--amber);}
+
+/* ── MOBILE NAV ── */
+.mob-menu{
+  display:none;flex-direction:column;
+  background:var(--ivory);padding:16px 32px 24px;
+  border-bottom:1px solid var(--border);gap:2px;
+}
+.mob-menu.open{display:flex;}
+.mob-menu a{
+  font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--bark);font-weight:500;text-decoration:none;
+  padding:12px 0;border-bottom:1px solid var(--border);transition:color 0.2s;
+}
+.mob-menu a:last-child{border-bottom:none;}
+.mob-menu a:hover{color:var(--forest);}
+
+/* ── UTIL ── */
+.btn-primary{
+  display:inline-block;text-decoration:none;
+  background:var(--forest);color:var(--ivory);
+  font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:500;
+  padding:14px 32px;border-radius:2px;transition:background 0.25s,transform 0.2s;
+}
+.btn-primary:hover{background:var(--amber);transform:translateY(-2px);}
+.btn-outline{
+  display:inline-block;text-decoration:none;
+  border:1.5px solid var(--forest);color:var(--forest);
+  font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:500;
+  padding:14px 32px;border-radius:2px;transition:all 0.25s;
+}
+.btn-outline:hover{background:var(--forest);color:var(--ivory);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1040px){
+  nav,.stat-band,.local-section,#menu,.story-copy,#our-home,#find-us,#events,footer{padding-left:40px;padding-right:40px;}
+  .hero-content{padding:0 40px 60px;}
+  .hero-btn{right:40px;}
+  .img-break-overlay{padding-left:40px;}
+  .m-grid{grid-template-columns:1fr;}
+  .m-item:nth-child(even){padding-left:0;border-left:none;}
+  .m-grid-3{grid-template-columns:1fr 1fr;}
+  .b-item:nth-child(odd){padding-left:0;border-left:none;}
+  .nav-links li:not(:last-child):not(:nth-last-child(2)):not(:nth-last-child(3)){display:none;}
+}
+@media(max-width:768px){
+  /* Nav */
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  nav{padding:0 24px;}
+
+  /* Hero — stack button below hours instead of absolute-positioning it */
+  .hero{height:100svh;min-height:600px;align-items:flex-end;}
+  .hero-content{
+    padding:0 24px 48px;
+    max-width:100%;
+    width:100%;
+  }
+  .h-title{font-size:clamp(38px,11vw,64px);}
+  .h-desc{font-size:17px;max-width:100%;}
+  .h-hours{gap:20px;flex-direction:column;}
+  /* Move "Explore Menu" button into the content flow on mobile */
+  .hero-btn{
+    position:static;
+    display:inline-block;
+    margin-top:28px;
+  }
+
+  /* Stat band */
+  .stat-band{grid-template-columns:1fr;gap:36px;padding:48px 32px;}
+  .stat-sep{display:none;}
+
+  /* Image break */
+  .img-break{height:340px;}
+  .img-break-overlay{padding-left:24px;}
+  .ib-quote blockquote{font-size:clamp(17px,4.5vw,22px);}
+
+  /* Menu */
+  .local-section,#menu,#events{padding:64px 24px;}
+  .m-grid{grid-template-columns:1fr;}
+  .m-item:nth-child(even){padding-left:0;border-left:none;}
+  .m-grid-3{grid-template-columns:1fr;}
+  .b-item{padding-left:0 !important;border-left:none !important;}
+  .flights-grid{grid-template-columns:1fr;}
+  .m-tabs{gap:0;}
+  .tab-btn{padding:12px 12px;font-size:9.5px;letter-spacing:1.8px;}
+  .hours-row{gap:16px;flex-direction:column;align-items:flex-start;}
+
+  /* Story */
+  .story-grid{grid-template-columns:1fr;}
+  .story-img{height:280px;}
+  .story-copy{padding:52px 24px;}
+
+  /* Our Home */
+  #our-home{grid-template-columns:1fr;padding:64px 24px;gap:36px;}
+  .home-img{height:260px;order:-1;}
+
+  /* Events */
+  .events-grid{grid-template-columns:1fr;}
+
+  /* Find Us */
+  #find-us{grid-template-columns:1fr;padding:64px 24px;gap:48px;}
+  .map-box{height:260px;}
+  .hrs-row{flex-direction:column;gap:2px;}
+
+  /* Footer */
+  footer{padding:52px 24px 28px;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:10px;}
+}
+@media(max-width:480px){
+  /* Nav */
+  nav{height:60px;}
+
+  /* Hero */
+  .hero-content{padding:0 18px 40px;}
+  .h-title{font-size:clamp(34px,12vw,52px);}
+  .h-desc{font-size:16px;}
+  .ann-bar{font-size:10px;letter-spacing:1.5px;padding:8px 16px;}
+
+  /* Stat */
+  .stat-band{padding:40px 20px;}
+  .stat-item .s-num{font-size:38px;}
+
+  /* Menu tabs scroll */
+  .m-tabs{-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .m-tabs::-webkit-scrollbar{display:none;}
+  .tab-btn{padding:10px 12px;font-size:9px;}
+
+  /* Story */
+  .story-copy{padding:44px 18px;}
+  .s-callout p{font-size:16px;}
+
+  /* Our Home / Find Us */
+  #our-home,#find-us{padding:52px 18px;}
+  .local-section,#menu,#events{padding:52px 18px;}
+  footer{padding:44px 18px 24px;}
+
+  /* Footer */
+  .footer-grid{grid-template-columns:1fr;}
+  .foot-bottom-links{flex-wrap:wrap;gap:14px;}
+
+  /* Buttons */
+  .btn-primary,.btn-outline,.hero-btn{font-size:9.5px;padding:13px 24px;}
+
+  /* Find Us hrs */
+  .hrs-row{flex-direction:column;gap:2px;margin-bottom:4px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="ann-bar">
+  Serving Dehradun since 2019 &nbsp;·&nbsp; Weekend Brunch: Sat &amp; Sun 9AM – 3PM &nbsp;·&nbsp; Catering &amp; Private Events Available
+</div>
+
+<!-- Nav -->
+<nav id="main-nav">
+  <a href="#home" class="nav-logo">
+    <span class="n-main">Coffee Park</span>
+    <span class="n-sub">Dehradun, Uttarakhand</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#find-us">Find Us</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#events">Private Events</a></li>
+    <li><a href="#events" class="btn-catering">Catering</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob-menu" id="mob-nav">
+  <a href="#home"   onclick="closeNav()">Home</a>
+  <a href="#menu"   onclick="closeNav()">Menu</a>
+  <a href="#find-us" onclick="closeNav()">Find Us</a>
+  <a href="#story"  onclick="closeNav()">Our Story</a>
+  <a href="#events" onclick="closeNav()">Private Events</a>
+  <a href="#events" onclick="closeNav()">Catering</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="h-eyebrow">Est. 2019 · Rajpur Road, Dehradun</p>
+    <h1 class="h-title">Brewed Among<br><em>the Pines</em></h1>
+    <p class="h-desc">A neighbourhood café in the foothills of the Himalayas. Slow coffee, honest food, and the kind of morning that stays with you.</p>
+    <div class="h-hours">
+      <div class="h-hr-item">
+        <span class="h-hr-label">Breakfast</span>
+        <span class="h-hr-time">8:00 AM → 11:00 AM</span>
+      </div>
+      <div class="h-hr-item">
+        <span class="h-hr-label">All-Day Bites</span>
+        <span class="h-hr-time">11:00 AM → 3:00 PM</span>
+      </div>
+      <div class="h-hr-item">
+        <span class="h-hr-label">Brunch (Sat &amp; Sun)</span>
+        <span class="h-hr-time">Open → 3:00 PM</span>
+      </div>
+    </div>
+  </div>
+  <a href="#menu" class="hero-btn">Explore Menu</a>
+</section>
+
+<!-- Stat Band -->
+<div class="stat-band">
+  <div class="stat-item">
+    <div class="s-num">14+</div>
+    <div class="s-label">Local Partners</div>
+  </div>
+  <div class="stat-sep"></div>
+  <div class="stat-item">
+    <div class="s-num">6</div>
+    <div class="s-label">Single Origins on Rotation</div>
+  </div>
+  <div class="stat-sep"></div>
+  <div class="stat-item">
+    <div class="s-num">5 Yrs</div>
+    <div class="s-label">In Dehradun</div>
+  </div>
+</div>
+
+<!-- Supporting Local -->
+<section class="local-section">
+  <p class="sec-label">Community First</p>
+  <h2 class="sec-title">Supporting <em>Local Friends</em></h2>
+  <div class="sec-divider" style="margin:18px auto;"></div>
+  <p class="local-sub">Every cup, every plate carries a provenance. We work directly with growers, roasters, and bakers from across Uttarakhand and the Doon Valley.</p>
+  <div class="friends-wrap">
+    <span class="f-tag">Doon Valley Roasters</span>
+    <span class="f-tag">Mussoorie Dairy</span>
+    <span class="f-tag">Haridwar Honey Farm</span>
+    <span class="f-tag">Forest Microgreens Doon</span>
+    <span class="f-tag">Rajpur Organic Farm</span>
+    <span class="f-tag">Himalayan Tea Estate</span>
+    <span class="f-tag">Char Dham Preserves</span>
+    <span class="f-tag">Nainital Kombucha Co.</span>
+    <span class="f-tag">Tehri Cold Press</span>
+    <span class="f-tag">Dehradun Sourdough Studio</span>
+    <span class="f-tag">Sahastradhara Herbs</span>
+    <span class="f-tag">Bhotia Spice Collective</span>
+    <span class="f-tag">Landour Bakehouse</span>
+    <span class="f-tag">Uttarakhand Mushroom Works</span>
+  </div>
+</section>
+
+<!-- Image Break -->
+<div class="img-break">
+  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&auto=format&fit=crop&q=80" alt="Coffee Park — a slow cup in Dehradun"/>
+  <div class="img-break-overlay">
+    <div class="ib-quote">
+      <blockquote>"The best conversations begin with a good cup of coffee and no particular rush."</blockquote>
+      <cite>The Coffee Park Kitchen</cite>
+    </div>
+  </div>
+</div>
+
+<!-- Menu -->
+<section id="menu">
+  <div class="menu-header">
+    <p class="sec-label">What We Serve</p>
+    <h2 class="sec-title">Our <em>Menu</em></h2>
+    <div class="sec-divider" style="margin:18px auto;"></div>
+    <div class="hours-row">
+      <div class="h-chip"><div class="h-dot"></div><span class="h-chip-label"><strong>Breakfast</strong> · Mon – Sat 8AM → 11AM</span></div>
+      <div class="h-chip"><div class="h-dot"></div><span class="h-chip-label"><strong>All-Day Bites</strong> · Mon – Sat 11AM → 3PM</span></div>
+      <div class="h-chip"><div class="h-dot"></div><span class="h-chip-label"><strong>Brunch</strong> · Sat &amp; Sun Open → 3PM</span></div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="m-tabs">
+    <button class="tab-btn active" onclick="showTab('coffee',this)">Espresso &amp; Coffee</button>
+    <button class="tab-btn" onclick="showTab('cold',this)">Cold &amp; Specialty</button>
+    <button class="tab-btn" onclick="showTab('breakfast',this)">Breakfast</button>
+    <button class="tab-btn" onclick="showTab('bites',this)">All-Day Bites</button>
+    <button class="tab-btn" onclick="showTab('baked',this)">Baked Goods</button>
+    <button class="tab-btn" onclick="showTab('brunch',this)">Weekend Brunch</button>
+  </div>
+
+  <!-- ESPRESSO & COFFEE -->
+  <div class="m-panel active" id="panel-coffee">
+    <div class="msec">
+      <div class="msec-title">Espresso Classics</div>
+      <div class="msec-sub">Pulled on our La Marzocca · Doon Valley Roasters house blend</div>
+      <div class="msec-rule"></div>
+      <div class="m-grid">
+        <div class="m-item"><div><div class="i-name">Espresso</div><div class="i-desc">single origin · straight or with a twist of lemon peel</div></div><div class="i-price">₹95</div></div>
+        <div class="m-item"><div><div class="i-name">Double Espresso</div><div class="i-desc">two concentrated shots · clean and bold</div></div><div class="i-price">₹145</div></div>
+        <div class="m-item"><div><div class="i-name">Americano</div><div class="i-desc">espresso · hot water · served black or with warm milk on side</div></div><div class="i-price">₹155</div></div>
+        <div class="m-item"><div><div class="i-name">Flat White</div><div class="i-desc">ristretto · velvety microfoam · Mussoorie full-fat milk</div></div><div class="i-price">₹215</div></div>
+        <div class="m-item"><div><div class="i-name">Cappuccino</div><div class="i-desc">espresso · steamed milk · thick dry foam · dusted with cocoa</div></div><div class="i-price">₹195</div></div>
+        <div class="m-item"><div><div class="i-name">Latte</div><div class="i-desc">double espresso · steamed milk · thin layer of foam</div></div><div class="i-price">₹225</div></div>
+        <div class="m-item"><div><div class="i-name">Cortado</div><div class="i-desc">espresso cut with equal parts warm milk · no foam</div></div><div class="i-price">₹185</div></div>
+        <div class="m-item"><div><div class="i-name">Macchiato</div><div class="i-desc">espresso marked with a dollop of foam</div></div><div class="i-price">₹165</div></div>
+      </div>
+    </div>
+    <div class="msec">
+      <div class="msec-title">Filter &amp; Pour Over</div>
+      <div class="msec-sub">Six single origins on rotation · ask us what's brewing today</div>
+      <div class="msec-rule"></div>
+      <div class="m-grid">
+        <div class="m-item"><div><div class="i-name">V60 Pour Over</div><div class="i-desc">hand-poured · single origin of the day · 6 min brew</div></div><div class="i-price">₹275</div></div>
+        <div class="m-item"><div><div class="i-name">Aeropress</div><div class="i-desc">clean · bright · full-bodied · your choice of single origin</div></div><div class="i-price">₹265</div></div>
+        <div class="m-item"><div><div class="i-name">South Indian Filter Coffee</div><div class="i-desc">slow drip decoction · chicory blend · full-fat milk · steel tumbler</div></div><div class="i-price">₹155</div></div>
+        <div class="m-item"><div><div class="i-name">Café de Olla</div><div class="i-desc">clay pot–style · cinnamon · piloncillo · deeply comforting</div></div><div class="i-price">₹195</div></div>
+        <div class="m-item"><div><div class="i-name">French Press</div><div class="i-desc">coarser grind · 4 min steep · smooth body</div></div><div class="i-price">₹245</div></div>
+        <div class="m-item"><div><div class="i-name">Batch Brew</div><div class="i-desc">rotating single origin · brewed fresh every hour</div></div><div class="i-price">₹145</div></div>
+      </div>
+    </div>
+    <div class="msec">
+      <div class="msec-title">Non-Coffee</div>
+      <div class="msec-sub">For those who came for the atmosphere</div>
+      <div class="msec-rule"></div>
+      <div class="m-grid">
+        <div class="m-item"><div><div class="i-name">Masala Chai</div><div class="i-desc">house spice blend · Mussoorie full-fat milk · slow simmered</div></div><div class="i-price">₹95</div></div>
+        <div class="m-item"><div><div class="i-name">Kashmiri Kahwa</div><div class="i-desc">green tea · saffron · cardamom · cinnamon · almond</div></div><div class="i-price">₹195</div></div>
+        <div class="m-item"><div><div class="i-name">Chamomile &amp; Honey</div><div class="i-desc">whole chamomile blooms · Haridwar forest honey · lemon</div></div><div class="i-price">₹175</div></div>
+        <div class="m-item"><div><div class="i-name">Hot Chocolate</div><div class="i-desc">Valrhona dark cocoa · steamed milk · house marshmallow</div></div><div class="i-price">₹245</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLD & SPECIALTY -->
+  <div class="m-panel" id="panel-cold">
+    <div class="msec">
+      <div class="msec-title">Cold Brew &amp; Iced Coffee</div>
+      <div class="msec-sub">12-hour cold steep · single origin · served over clear ice</div>
+      <div class="msec-rule"></div>
+      <div class="m-grid">
+        <div class="m-item"><div><div class="i-name">Cold Brew</div><div class="i-desc">12-hr cold steep · Doon Valley single origin · clean &amp; smooth</div></div><div class="i-price">₹245</div></div>
+        <div class="m-item"><div><div class="i-name">Nitro Cold Brew</div><div class="i-desc">nitrogen-infused · creamy head · zero milk added</div></div><div class="i-price">₹295</div></div>
+        <div class="m-item"><div><div class="i-name">Iced Latte</div><div class="i-desc">double espresso · full-fat milk · ice · no syrup by default</div></div><div class="i-price">₹225</div></div>
+        <div class="m-item"><div><div class="i-name">Cold Brew Tonic</div><div class="i-desc">cold brew concentrate · Indian tonic water · orange zest</div></div><div class="i-price">₹275</div></div>
+        <div class="m-item"><div><div class="i-name">Vietnamese Iced Coffee</div><div class="i-desc">dark roast drip · condensed milk · crushed ice</div></div><div class="i-price">₹245</div></div>
+        <div class="m-item"><div><div class="i-name">Iced Americano</div><div class="i-desc">double espresso · cold water · big ice · simple and clean</div></div><div class="i-price">₹175</div></div>
+      </div>
+    </div>
+    <div class="msec">
+      <div class="msec-title">Specialty Lattes</div>
+      <div class="msec-sub">House syrups and blends · can be made iced on request</div>
+      <div class="msec-rule"></div>
+      <div class="m-grid">
+        <div class="m-item"><div><div class="i-name">Cardamom Rose Latte</div><div class="i-desc">espresso · house rose cardamom syrup · oat milk · dried rose petals</div></div><div class="i-price">₹275</div></div>
+        <div class="m-item"><div><div class="i-name">Golden Milk Latte</div><div class="i-desc">turmeric · ginger · black pepper · oat milk · honey</div></div><div class="i-price">₹245</div></div>
+        <div class="m-item"><div><div class="i-name">Brown Sugar Oat Latte</div><div class="i-desc">espresso · house brown sugar syrup · oat milk · cinnamon dust</div></div><div class="i-price">₹265</div></div>
+        <div class="m-item"><div><div class="i-name">Saffron Latte</div><div class="i-desc">espresso · Kashmiri saffron syrup · full-fat milk · gold dust</div></div><div class="i-price">₹295</div></div>
+        <div class="m-item"><div><div class="i-name">Dalgona Whipped Coffee</div><div class="i-desc">whipped coffee foam · chilled milk · serve yourself the pour</div></div><div class="i-price">₹245</div></div>
+        <div class="m-item"><div><div class="i-name">Iced Matcha Latte</div><div class="i-desc">ceremonial grade matcha · oat milk · light honey · big ice</div></div><div class="i-price">₹265</div></div>
+      </div>
+    </div>
+    <div class="msec">
+      <div class="msec-title">Cold &amp; Seasonal</div>
+      <div class="msec-sub">Rotating with the season</div>
+      <div class="msec-rule"></div>
+      <div class="m-grid">
+        <div class="m-item"><div><div class="i-name">Aam Panna Spritz</div><div class="i-desc">raw mango · jaljeera · sparkling water · salted rim</div></div><div class="i-price">₹175</div></div>
+        <div class="m-item"><div><div class="i-name">Nainital Kombucha</div><div class="i-desc">live culture · seasonal flavour · ask us today's batch</div></div><div class="i-price">₹295</div></div>
+        <div class="m-item"><div><div class="i-name">Tehri Cold Press</div><div class="i-desc">cold-pressed juice · seasonal fruit · no added sugar</div></div><div class="i-price">₹175</div></div>
+        <div class="m-item"><div><div class="i-name">Rose Sharbat</div><div class="i-desc">Rajasthani rose syrup · cold water · basil seeds · lemon</div></div><div class="i-price">₹155</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BREAKFAST -->
+  <div class="m-panel" id="panel-breakfast">
+    <div class="msec">
+      <div class="msec-title">Breakfast</div>
+      <div class="msec-sub">Monday – Saturday · 8:00 AM to 11:00 AM</div>
+      <div class="msec-rule"></div>
+      <div class="m-grid">
+        <div class="m-item"><div><div class="i-name">Granola Bowl</div><div class="i-desc">cardamom-spiced yogurt · pistachio oat granola · seasonal fruit · Haridwar honey</div></div><div class="i-price">₹265</div></div>
+        <div class="m-item"><div><div class="i-name">Avocado Toast</div><div class="i-desc">Dehradun sourdough · smashed avocado · sea salt · lemon · chilli flakes · micro herbs</div></div><div class="i-price">₹365</div></div>
+        <div class="m-item"><div><div class="i-name">Smashed Egg Croissant</div><div class="i-desc">Landour Bakehouse croissant · soft scrambled eggs · gruyère · chilli butter</div></div><div class="i-price">₹375</div></div>
+        <div class="m-item"><div><div class="i-name">Eggs on Toast</div><div class="i-desc">two farm eggs your way · house sourdough · butter · house preserve</div></div><div class="i-price">₹295</div></div>
+        <div class="m-item"><div><div class="i-name">Banana Bread French Toast</div><div class="i-desc">thick-cut banana bread · custard soak · maple · candied walnut · crème fraîche</div></div><div class="i-price">₹345</div></div>
+        <div class="m-item"><div><div class="i-name">Aloo Paratha</div><div class="i-desc">stuffed whole-wheat flatbread · white butter · house pickle · thick yogurt</div></div><div class="i-price">₹295</div></div>
+        <div class="m-item"><div><div class="i-name">Poha Bowl</div><div class="i-desc">flattened rice · curry leaves · mustard · roasted peanuts · lemon · sev</div></div><div class="i-price">₹225</div></div>
+        <div class="m-item"><div><div class="i-name">Smoked Salmon Tartine</div><div class="i-desc">sourdough · dill cream cheese · smoked salmon · capers · red onion</div></div><div class="i-price">₹425</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALL-DAY BITES -->
+  <div class="m-panel" id="panel-bites">
+    <div class="msec">
+      <div class="msec-title">Light Bites</div>
+      <div class="msec-sub">Available from 11:00 AM through close</div>
+      <div class="msec-rule"></div>
+      <div class="m-grid">
+        <div class="m-item"><div><div class="i-name">Hummus &amp; Lavash</div><div class="i-desc">house chickpea hummus · za'atar oil · warm lavash · carrot · cucumber</div></div><div class="i-price">₹275</div></div>
+        <div class="m-item"><div><div class="i-name">Stuffed Dates</div><div class="i-desc">medjool dates · labneh · toasted pistachio · Haridwar honey</div></div><div class="i-price">₹225</div></div>
+        <div class="m-item"><div><div class="i-name">Seasonal Soup</div><div class="i-desc">ask your server · served with a slice of sourdough</div></div><div class="i-price">₹195</div></div>
+        <div class="m-item"><div><div class="i-name">Bread Basket</div><div class="i-desc">house focaccia · sourdough · rye · cultured butter · house preserve</div></div><div class="i-price">₹245</div></div>
+      </div>
+    </div>
+    <div class="msec">
+      <div class="msec-title">Salads</div>
+      <div class="msec-rule"></div>
+      <div class="m-grid">
+        <div class="m-item"><div><div class="i-name">House Salad</div><div class="i-desc">local greens · arugula · tomato · cucumber · shaved beet · citrus vinaigrette</div></div><div class="i-price">₹325</div></div>
+        <div class="m-item"><div><div class="i-name">Warm Grain Bowl</div><div class="i-desc">green lentil · kale · roasted squash · beet · cauliflower · tahini maple</div></div><div class="i-price">₹395</div></div>
+        <div class="m-item"><div><div class="i-name">Grilled Halloumi Salad</div><div class="i-desc">local greens · halloumi · cherry tomato · olives · sun-dried tomato · balsamic</div></div><div class="i-price">₹445</div></div>
+        <div class="m-item"><div><div class="i-name">Mushroom &amp; Arugula</div><div class="i-desc">Uttarakhand wild mushroom · arugula · parmesan · lemon · croutons</div></div><div class="i-price">₹375</div></div>
+      </div>
+    </div>
+    <div class="msec">
+      <div class="msec-title">Sandwiches &amp; Toasts</div>
+      <div class="msec-rule"></div>
+      <div class="m-grid">
+        <div class="m-item"><div><div class="i-name">Classic Grilled Cheese</div><div class="i-desc">house sourdough · three-cheese blend · dijon · pickled jalapeño</div></div><div class="i-price">₹345</div></div>
+        <div class="m-item"><div><div class="i-name">Club Sandwich</div><div class="i-desc">toasted white · grilled chicken · bacon · egg · lettuce · tomato · house aioli</div></div><div class="i-price">₹425</div></div>
+        <div class="m-item"><div><div class="i-name">Mushroom Toast</div><div class="i-desc">house focaccia · sautéed Uttarakhand mushrooms · goat cheese · thyme</div></div><div class="i-price">₹375</div></div>
+        <div class="m-item"><div><div class="i-name">Panino Burrata</div><div class="i-desc">house focaccia · burrata · prosciutto · balsamic glaze · arugula</div></div><div class="i-price">₹525</div></div>
+        <div class="m-item"><div><div class="i-name">BLT Open Toast</div><div class="i-desc">sourdough · house bacon · butter lettuce · heirloom tomato · lemon aioli</div></div><div class="i-price">₹375</div></div>
+        <div class="m-item"><div><div class="i-name">Portobello Sandwich</div><div class="i-desc">focaccia · roasted portobello · tomato aioli · arugula · pickled onion</div></div><div class="i-price">₹395</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BAKED GOODS -->
+  <div class="m-panel" id="panel-baked">
+    <div class="msec">
+      <div class="msec-title">From the Oven</div>
+      <div class="msec-sub">Baked fresh every morning in partnership with Landour Bakehouse · Available till sold out</div>
+      <div class="msec-rule"></div>
+      <div class="m-grid-3">
+        <div class="b-item"><div><div class="i-name">Plain Croissant</div><div class="i-desc">laminated dough · cultured butter · Landour</div></div><div class="i-price">₹195</div></div>
+        <div class="b-item"><div><div class="i-name">Almond Croissant</div><div class="i-desc">frangipane filling · toasted almond · icing sugar</div></div><div class="i-price">₹245</div></div>
+        <div class="b-item"><div><div class="i-name">Dark Chocolate Croissant</div><div class="i-desc">Valrhona dark filling · twice baked</div></div><div class="i-price">₹245</div></div>
+        <div class="b-item"><div><div class="i-name">Cinnamon Roll</div><div class="i-desc">enriched dough · brown sugar · cream cheese glaze</div></div><div class="i-price">₹245</div></div>
+        <div class="b-item"><div><div class="i-name">Banana Bread</div><div class="i-desc">per slice · Mussoorie banana · walnut · dark chocolate chips</div></div><div class="i-price">₹175</div></div>
+        <div class="b-item"><div><div class="i-name">Blueberry Muffin</div><div class="i-desc">house baked · seasonal blueberry · lemon zest</div></div><div class="i-price">₹195</div></div>
+        <div class="b-item"><div><div class="i-name">Carrot Cake Slice</div><div class="i-desc">spiced carrot cake · cream cheese frosting · candied walnut</div></div><div class="i-price">₹265</div></div>
+        <div class="b-item"><div><div class="i-name">Brownie</div><div class="i-desc">Valrhona 70% · fudgy · sea salt top · served warm</div></div><div class="i-price">₹195</div></div>
+        <div class="b-item"><div><div class="i-name">Seasonal Tart</div><div class="i-desc">buttery crust · pastry cream · glazed seasonal fruit</div></div><div class="i-price">₹275</div></div>
+        <div class="b-item"><div><div class="i-name">Alfajores</div><div class="i-desc">shortbread · dulce de leche · coconut dust · pair of 2</div></div><div class="i-price">₹225</div></div>
+        <div class="b-item"><div><div class="i-name">Chocolate Chip Cookie</div><div class="i-desc">crisp edge · soft centre · Valrhona chunks</div></div><div class="i-price">₹95</div></div>
+        <div class="b-item"><div><div class="i-name">House Focaccia Slice</div><div class="i-desc">olive oil · rosemary · sea salt · Rajpur grain flour</div></div><div class="i-price">₹145</div></div>
+      </div>
+    </div>
+    <div class="msec" style="margin-top:40px;">
+      <div class="msec-title">Baked Goods To Go</div>
+      <div class="msec-sub">Pre-order by 5PM the evening before</div>
+      <div class="msec-rule"></div>
+      <div class="flights-grid">
+        <div class="f-card"><div class="fc-name">Morning Box (2)</div><div class="fc-desc">Your choice of 2 pastries · house jam · butter</div><div class="fc-price">₹445</div></div>
+        <div class="f-card"><div class="fc-name">Morning Box (4)</div><div class="fc-desc">Your choice of 4 pastries · house jam · butter · seasonal preserve</div><div class="fc-price">₹795</div></div>
+        <div class="f-card"><div class="fc-name">Brownie Half Dozen</div><div class="fc-desc">6 fudgy brownies · packaged for gifting</div><div class="fc-price">₹995</div></div>
+        <div class="f-card"><div class="fc-name">Cookie Dozen</div><div class="fc-desc">12 assorted cookies · choice of chocolate chip / oat / shortbread</div><div class="fc-price">₹995</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKEND BRUNCH -->
+  <div class="m-panel" id="panel-brunch">
+    <div class="msec">
+      <div class="msec-title">Weekend Brunch</div>
+      <div class="msec-sub">Saturday &amp; Sunday · Open to 3:00 PM · Reservations for parties of 5 or more</div>
+      <div class="msec-rule"></div>
+      <div class="m-grid">
+        <div class="m-item"><div><div class="i-name">The Full Park Brunch</div><div class="i-desc">two eggs · choice of toast · house bacon or mushroom · seasonal fruit · any coffee</div></div><div class="i-price">₹695</div></div>
+        <div class="m-item"><div><div class="i-name">Shakshuka</div><div class="i-desc">spiced tomato base · two poached farm eggs · feta · warm focaccia</div></div><div class="i-price">₹445</div></div>
+        <div class="m-item"><div><div class="i-name">Pancake Stack</div><div class="i-desc">buttermilk pancakes · maple syrup · seasonal compote · whipped butter</div></div><div class="i-price">₹395</div></div>
+        <div class="m-item"><div><div class="i-name">Eggs Benedict</div><div class="i-desc">toasted sourdough muffin · poached eggs · ham · house hollandaise</div></div><div class="i-price">₹495</div></div>
+        <div class="m-item"><div><div class="i-name">Brunch Grain Bowl</div><div class="i-desc">farro · soft-boiled egg · roasted vegetables · tahini · za'atar</div></div><div class="i-price">₹445</div></div>
+        <div class="m-item"><div><div class="i-name">Croque Monsieur</div><div class="i-desc">thick-cut sourdough · gruyère béchamel · ham · sunny side up</div></div><div class="i-price">₹495</div></div>
+        <div class="m-item"><div><div class="i-name">Avocado &amp; Soft Egg Toast</div><div class="i-desc">sourdough · avocado · soft boiled egg · chilli oil · micro herbs</div></div><div class="i-price">₹395</div></div>
+        <div class="m-item"><div><div class="i-name">French Toast</div><div class="i-desc">brioche · custard soak · cinnamon · maple · mascarpone · berry compote</div></div><div class="i-price">₹395</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Story -->
+<section id="story">
+  <div class="story-grid">
+    <div class="story-img">
+      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&auto=format&fit=crop&q=80" alt="Inside Coffee Park"/>
+    </div>
+    <div class="story-copy">
+      <p class="sec-label">Who We Are</p>
+      <h2 class="sec-title">A <em>Dehradun Story</em> Brewed Over Five Years</h2>
+      <div class="sec-divider"></div>
+      <p class="s-body">Coffee Park started as a small corner in Rajpur Road with one La Marzocca machine, a handful of single-origin bags, and a deep stubbornness about not cutting corners. Five years on, we're still that same corner — just with a lot more familiar faces.</p>
+      <p class="s-body">We source directly from roasters and farmers who care as much as we do. Our coffee changes with the harvest. Our food is built around what's growing nearby. Nothing on our menu is arbitrary.</p>
+      <div class="s-callout">
+        <p>"We didn't set out to build a café. We set out to build a place we'd actually want to spend time in."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Home -->
+<section id="our-home">
+  <div class="home-text">
+    <p class="sec-label">The Space</p>
+    <h2 class="sec-title">A <em>Colonial Bungalow</em> Reimagined</h2>
+    <div class="sec-divider"></div>
+    <p class="home-body">Nestled behind a line of old deodars on Rajpur Road, our building is a restored 1940s colonial bungalow. The original stone walls, wide verandas, and wooden beams are still intact — we just let more light in and put better coffee in the kitchen.</p>
+    <p class="home-body">The indoor-outdoor layout means you're never far from the sound of the wind through the pine trees or the smell of rain on the garden. We think that's as important as what's in your cup.</p>
+    <p class="home-credit">Restoration by Doon Heritage Conservation Studio</p>
+    <div style="margin-top:36px;">
+      <a href="#story" class="btn-outline">Read Our Story</a>
+    </div>
+  </div>
+  <div class="home-img">
+    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=900&auto=format&fit=crop&q=80" alt="Coffee Park bungalow and garden"/>
+  </div>
+</section>
+
+<!-- Private Events -->
+<section id="events">
+  <p class="sec-label">Celebrate With Us</p>
+  <h2 class="sec-title">Private <em>Events</em> &amp; Catering</h2>
+  <div class="sec-divider" style="margin:18px auto;"></div>
+  <p class="e-sub">Our garden and veranda are available for private hire. We do the coffee. You bring the occasion.</p>
+  <div class="events-grid">
+    <div class="e-card">
+      <div class="e-icon">☕</div>
+      <div class="e-name">Corporate Gatherings</div>
+      <div class="e-desc">Curated coffee stations, light lunch spreads, or working breakfast for teams of 8–40. Customised to dietary needs.</div>
+    </div>
+    <div class="e-card">
+      <div class="e-icon">🌿</div>
+      <div class="e-name">Private Celebrations</div>
+      <div class="e-desc">Birthdays, anniversaries, small weddings. Book the garden or veranda exclusively for an evening or full day.</div>
+    </div>
+    <div class="e-card">
+      <div class="e-icon">📦</div>
+      <div class="e-name">Catering &amp; Delivery</div>
+      <div class="e-desc">We bring Coffee Park to your venue. Pastry trays, live coffee bars, sandwich spreads, and bespoke menus.</div>
+    </div>
+  </div>
+  <div style="margin-top:52px;">
+    <a href="/cdn-cgi/l/email-protection#dabfacbfb4aea99ab9b5bcbcbfbfaabba8b1f4b3b4" class="btn-primary">Enquire About Events</a>
+  </div>
+</section>
+
+<!-- Find Us -->
+<section id="find-us">
+  <div>
+    <p class="sec-label">Come Visit</p>
+    <h2 class="sec-title">Find <em>Us</em></h2>
+    <div class="sec-divider"></div>
+    <div class="find-info">
+      <div>
+        <div class="fi-label">Address</div>
+        <div class="fi-val">47-B, Rajpur Road<br>Near Clock Tower, Dehradun<br>Uttarakhand 248 001</div>
+      </div>
+      <div>
+        <div class="fi-label">Hours</div>
+        <div class="hrs-table">
+          <div class="hrs-row"><span class="day">Monday – Saturday</span><span>8:00 AM – 3:00 PM</span></div>
+          <div class="hrs-row"><span class="day">Sunday</span><span>9:00 AM – 3:00 PM</span></div>
+          <div class="hrs-row"><span class="day">Kitchen closes</span><span>2:30 PM daily</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="fi-label">Contact</div>
+        <div class="fi-val">
+          <a href="tel:+919876012345">+91 98760 12345</a><br>
+          <a href="/cdn-cgi/l/email-protection#bbd3ded7d7d4fbd8d4dddddedecbdac9d095d2d5"><span class="__cf_email__" data-cfemail="e189848d8d8ea1828e878784849180938acf888f">[email&#160;protected]</span></a>
+        </div>
+      </div>
+      <div>
+        <div class="fi-label">Reservations</div>
+        <div class="fi-val" style="font-size:15px;">We accept reservations for parties of 5 or more. Walk-ins always welcome.</div>
+      </div>
+      <a href="https://maps.google.com" target="_blank" class="map-link">Open in Google Maps</a>
+    </div>
+  </div>
+  <div class="map-box">
+    <div class="map-icon">📍</div>
+    <div class="map-place">Coffee Park, Dehradun</div>
+    <div class="map-addr">47-B Rajpur Road · Uttarakhand</div>
+    <a href="https://maps.google.com" target="_blank" class="map-link" style="margin-top:16px;">Get Directions</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="foot-brand">
+      <div class="fb-name">Coffee Park</div>
+      <div class="fb-sub">Dehradun · Uttarakhand</div>
+      <p class="fb-about">A neighbourhood coffee shop in the foothills of the Himalayas. Slow coffee, honest food, and familiar faces since 2019.</p>
+    </div>
+    <div>
+      <div class="foot-col-title">Navigate</div>
+      <ul class="foot-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#events">Private Events</a></li>
+        <li><a href="#find-us">Find Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-col-title">Menu</div>
+      <ul class="foot-links">
+        <li><a href="#menu">Espresso &amp; Coffee</a></li>
+        <li><a href="#menu">Cold &amp; Specialty</a></li>
+        <li><a href="#menu">Breakfast</a></li>
+        <li><a href="#menu">All-Day Bites</a></li>
+        <li><a href="#menu">Baked Goods</a></li>
+        <li><a href="#menu">Weekend Brunch</a></li>
+      </ul>
+    </div>
+    <div class="foot-contact">
+      <div class="foot-col-title">Contact</div>
+      <p>47-B, Rajpur Road<br>Dehradun, Uttarakhand<br>248 001</p><br>
+      <p><a href="tel:+919876012345">+91 98760 12345</a></p>
+      <p><a href="/cdn-cgi/l/email-protection#3f575a5353507f5c5059595a5a4f5e4d54115651"><span class="__cf_email__" data-cfemail="d5bdb0b9b9ba95b6bab3b3b0b0a5b4a7befbbcbb">[email&#160;protected]</span></a></p><br>
+      <p>Mon – Sat: 8AM – 3PM</p>
+      <p>Sunday: 9AM – 3PM (Brunch)</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2025 Coffee Park, Dehradun. All rights reserved.</p>
+    <ul class="foot-bottom-links">
+      <li><a href="#">Join Our Team</a></li>
+      <li><a href="#">Catering</a></li>
+      <li><a href="#">Employee Portal</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function toggleNav(){ document.getElementById('mob-nav').classList.toggle('open'); }
+  function closeNav(){ document.getElementById('mob-nav').classList.remove('open'); }
+
+  function showTab(name, btn){
+    document.querySelectorAll('.m-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('panel-'+name).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  window.addEventListener('scroll',()=>{
+    document.getElementById('main-nav').style.boxShadow =
+      window.scrollY > 10 ? '0 2px 18px rgba(26,17,10,0.09)' : 'none';
+  });
+
+  const obs = new IntersectionObserver(entries=>{
+    entrie
